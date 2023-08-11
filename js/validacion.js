@@ -1,5 +1,6 @@
 const alertSuccess = document.getElementById("alert-success")
 const alertDanger = document.getElementById("alert-danger")
+const closeBtns = document.querySelectorAll('.btn-close')
 
 function showAlertSuccess() {
     alertSuccess.classList.add("show");
@@ -9,7 +10,7 @@ function showAlertError() {
     alertDanger.classList.add("show");
 }
 
-const btn = document.querySelector('button')
+const btn = document.getElementById('regBtn')
 
 const nombre = document.getElementById('nombre')
 const apellido = document.getElementById('apellido')
@@ -42,10 +43,8 @@ btn.addEventListener('click', () => {
     showAlertSuccess()
 })
 
-const close_btns = document.querySelectorAll('.btn-close')
-
-close_btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
         if (alertDanger.classList.contains('show')) {
             alertDanger.classList.remove('show')
         } else {

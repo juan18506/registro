@@ -1,9 +1,12 @@
+const alertSuccess = document.getElementById("alert-success")
+const alertDanger = document.getElementById("alert-danger")
+
 function showAlertSuccess() {
-    document.getElementById("alert-success").classList.add("show");
+    alertSuccess.classList.add("show");
 }
 
 function showAlertError() {
-    document.getElementById("alert-danger").classList.add("show");
+    alertDanger.classList.add("show");
 }
 
 const btn = document.querySelector('button')
@@ -37,4 +40,16 @@ btn.addEventListener('click', () => {
     }
 
     showAlertSuccess()
+})
+
+const close_btns = document.querySelectorAll('.btn-close')
+
+close_btns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        if (alertDanger.classList.contains('show')) {
+            alertDanger.classList.remove('show')
+        } else {
+            alertSuccess.classList.remove('show')
+        }
+    })
 })

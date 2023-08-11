@@ -3,11 +3,13 @@ const alertDanger = document.getElementById("alert-danger")
 const closeBtns = document.querySelectorAll('.btn-close')
 
 function showAlertSuccess() {
-    alertSuccess.classList.add("show");
+  alertSuccess.classList.add("show");
+  alertDanger.classList.remove("show");
 }
 
 function showAlertError() {
-    alertDanger.classList.add("show");
+  alertDanger.classList.add("show");
+  alertSuccess.classList.remove("show");
 }
 
 const btn = document.getElementById('regBtn')
@@ -20,35 +22,36 @@ const password2 = document.getElementById('password2')
 const terminos = document.getElementById('terminos')
 
 btn.addEventListener('click', () => {
-    if (!nombre.value || !apellido.value || !email.value || !password1.value || !password2.value) {
-        showAlertError()
-        return
-    }
+  if (!nombre.value || !apellido.value || !email.value || !password1.value || !password2.value) {
+    showAlertError()
+    return
+  }
 
-    if (password1.value.length < 6) {
-        showAlertError()
-        return
-    }
+  if (password1.value.length < 6) {
+    showAlertError()
+    return
+  }
 
-    if (password1.value !== password2.value) {
-        showAlertError()
-        return
-    }
+  if (password1.value !== password2.value) {
+    showAlertError()
+    return
+  }
 
-    if (!terminos.checked) {
-        showAlertError()
-        return
-    }
+  if (!terminos.checked) {
+    showAlertError()
+    return
+  }
 
-    showAlertSuccess()
+  showAlertSuccess()
 })
 
+
 closeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        if (alertDanger.classList.contains('show')) {
-            alertDanger.classList.remove('show')
-        } else {
-            alertSuccess.classList.remove('show')
-        }
-    })
+  btn.addEventListener('click', () => {
+    if (alertDanger.classList.contains('show')) {
+      alertDanger.classList.remove('show')
+    } else {
+      alertSuccess.classList.remove('show')
+    }
+  })
 })
